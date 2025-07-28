@@ -2,13 +2,15 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package estacionamento;
+package model;
+
+import java.time.LocalDateTime;
 
 /**
  *
  * @author curso
  */
-public class ReservaDeVaga {
+public class ReservaDeVaga{
     private LocalDateTime dataHoraEntrada;
     private LocalDateTime dataHoraSaida;
     private int idReserva;
@@ -23,7 +25,7 @@ public class ReservaDeVaga {
         this.dataHoraSaida = dataHoraSaida;
         this.vaga = vaga;
         this.idReserva = i++;
-        this.vaga.getstatus("Ocupada");
+        this.vaga.setStatus("Ocupada");
     }
 
     public LocalDateTime getDataHoraEntrada() {
