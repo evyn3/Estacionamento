@@ -9,5 +9,7 @@ package view;
  * @author curso
  */
 public class UsuarioView {
-    
+    public void cadastrar(){
+        System.out.println("Usuario cadastrado com sucesso!!");
+    }
 }
