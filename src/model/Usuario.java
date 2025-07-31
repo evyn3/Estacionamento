@@ -66,13 +66,6 @@ public class Usuario {
         this.senha = senha;
     }
     
-    public void cadastrar() {}
     
-    public Usuario listar() { return this; }
-    
-    public void excluir() {}
-    
-    public Usuario pesquisar() { return this; }
-    
-    public void alterar() {}
+   
 }
