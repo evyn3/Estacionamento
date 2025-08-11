@@ -13,23 +13,41 @@ import view.UsuarioView;
  * @author curso
  */
 public class UsuarioControll {
-    private UsuarioDao usuario;
+    private UsuarioDao dao;
     private UsuarioView view;
+
+    public UsuarioControll(UsuarioDao dao, UsuarioView view) {
+        this.dao = dao;
+        this.view = view;
+    }
+    
     
     public void cadastrar(String nome, String cpf, String telefone, String email, String senha) {
         
         Usuario u = new Usuario(nome, cpf, telefone, email, senha);
         
-        usuario.cadastrar(u);
-        
-        
+        dao.cadastrar(u);
+        view.cadastrar();
+    
     }
     
-    //public Usuario listar() { return this; }
+    public void listar() { 
+        view.listar(dao.listar());
+    }
     
-    //public void excluir() {}
+    public void excluir(String cpf) {
+        dao.excluir(cpf);
+        view.excluir();
+    }
     
-    //public Usuario pesquisar() { return this; }
+    public void pesquisar(String cpf) { 
+        view.pesquisar(dao.pesquisar(cpf));
+    }
     
-    //public void alterar() {}
+    public void alterar(String nome, String cpf, String telefone, String email, String senha) {
+        dao.alterar(nome, cpf, telefone, email, senha);
+        view.alterar();
+    }
+    
+    
 }
