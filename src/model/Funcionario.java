@@ -21,7 +21,7 @@ public class Funcionario extends Usuario {
         this.codigo = codigo;
     }
 
-    @Override
+    /*@Override
     public void cadastrar() {
         System.out.println("Funcionario cadastrado com sucesso.");
     }
@@ -44,5 +44,5 @@ public class Funcionario extends Usuario {
     @Override
     public void alterar() {
         System.out.println("Dados do funcionario alterados.");
-    }
+    }*/
 }

@@ -37,9 +37,17 @@ public class UsuarioDao {
         return null;
     }
     
-    public void alterar(String cpf) {
+    public void alterar(String nome, String cpf, String telefone, String email, String senha) {
         Usuario us = pesquisar(cpf);
         
+        for(Usuario b : banco){
+            if (b == us){
+                b.setNome(nome);
+                b.setTelefone(telefone);
+                b.setEmail(email);
+                b.setSenha(senha);
+            }
+        }
+        
     }
-    
 }
