@@ -1,20 +1,13 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package dao;
 
 import java.util.ArrayList;
 import model.Usuario;
 
-/**
- *
- * @author curso
- */
 public class UsuarioDao {
-    
+
     ArrayList<Usuario> banco = new ArrayList<>();
-    
+
     public void cadastrar(Usuario usuario){
         banco.add(usuario);
     }
