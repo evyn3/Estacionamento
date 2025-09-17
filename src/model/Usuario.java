@@ -15,15 +15,26 @@ public class Usuario {
     private String email;
     private String senha;
 
+    private Endereco endereco;
+
     public Usuario() {
     }
 
-    public Usuario(String nome, String cpf, String telefone, String email, String senha) {
+    public Usuario(String nome, String cpf, String telefone, String email, String senha, Endereco endereco) {
         this.nome = nome;
         this.cpf = cpf;
         this.telefone = telefone;
         this.email = email;
         this.senha = senha;
+        this.endereco = endereco;
+    }
+
+    public Endereco getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
     }
 
     public String getNome() {
@@ -66,10 +77,6 @@ public class Usuario {
         this.senha = senha;
     }
 
-    @Override
-    public String toString() {
-        return "Usuario{" + "nome=" + nome + ", cpf=" + cpf + ", telefone=" + telefone + ", email=" + email + '}';
-    }
     
     
    

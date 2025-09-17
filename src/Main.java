@@ -1,8 +1,13 @@
 
+import controller.ClienteControll;
 import controller.UsuarioControll;
+import dao.ClienteDao;
 import dao.UsuarioDao;
 import java.util.Scanner;
+
+import model.Cliente;
 import model.Usuario;
+import view.ClienteView;
 import view.UsuarioView;
 
 /*
@@ -18,11 +23,23 @@ public class Main {
     
     public static void main(String[] args) {
         // TODO code application logic here
-        Scanner sc = new Scanner(System.in);
+
+        //--enable-native-access=ALL-UNNAMED
+
+        ClienteDao dao = new ClienteDao();
+        ClienteControll controller = new ClienteControll();
+        ClienteView view = new ClienteView();
+
+        controller.cadastrar();
+
+         /*Scanner sc = new Scanner(System.in);
         UsuarioDao dao = new UsuarioDao();
         UsuarioView view = new UsuarioView();
         UsuarioControll controller = new UsuarioControll(dao, view);
-        
+
+
+
+
         System.out.println("----------------TESTANDO O MODELO MVC--------------------\n");
         
         System.out.println("-----------CADASTRar----------");
@@ -60,6 +77,8 @@ public class Main {
         controller.alterar("Itala", "234.432.655-44", "74 99954-4345", "20211ireinfint0007@ifba.edu.br", "658478");
         
         controller.listar();
+
+         */
     }
     
 }

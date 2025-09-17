@@ -20,8 +20,8 @@ public class Cliente extends Usuario{
 
     }
 
-    public Cliente(String nome, String cpf, String telefone, String email, String senha, String cnh, double credito) {
-        super(nome, cpf, telefone, email, senha);
+    public Cliente(String nome, String cpf, String telefone, String email, String senha, Endereco endereco, String cnh, double credito) {
+        super(nome, cpf, telefone, email, senha, endereco);
         this.cnh = cnh;
         this.credito = credito;
     }

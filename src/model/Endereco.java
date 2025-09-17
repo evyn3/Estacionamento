@@ -18,7 +18,8 @@ public class Endereco {
     private String bairro;
     private String cidade;
 
-public void setRua(String rua) {
+
+    public void setRua(String rua) {
         this.rua = rua;
     }
 
