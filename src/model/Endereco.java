@@ -13,11 +13,19 @@ import java.util.Scanner;
 
 public class Endereco {
 
+    private int id;
     private String rua;
     private int numero;
     private String bairro;
     private String cidade;
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public void setRua(String rua) {
         this.rua = rua;

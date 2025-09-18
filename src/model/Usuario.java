@@ -14,7 +14,6 @@ public class Usuario {
     private String telefone;
     private String email;
     private String senha;
-
     private Endereco endereco;
 
     public Usuario() {
