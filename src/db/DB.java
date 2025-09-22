@@ -50,8 +50,8 @@ public class DB {
     public static void closeStatment(Statement st){ //fecha o Statment
         if(st !=null){
             try{
-                st.close();
-            }catch (SQLException e){
+                st.close(); //fecha o metodo Statment
+            }catch (SQLException e){ //
                 throw new DbException(e.getMessage());
             }
         }

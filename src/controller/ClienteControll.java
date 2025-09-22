@@ -5,6 +5,7 @@
 package controller;
 
 import dao.ClienteDao;
+import dao.EnderecoDao;
 import model.Cliente;
 import view.ClienteView;
 
@@ -13,9 +14,11 @@ import view.ClienteView;
  * @author curso
  */
 public class ClienteControll {
-    private Cliente model;
-    private ClienteView view = new ClienteView();
 
+    //private EnderecoControll ende = new EnderecoControll();
+    private EnderecoDao endao = new EnderecoDao();
+    private Cliente model = new Cliente();
+    private ClienteView view = new ClienteView();
     private ClienteDao dao = new ClienteDao();
 
     public ClienteControll() {
@@ -23,8 +26,11 @@ public class ClienteControll {
     }
 
     public void cadastrar(){
+        //ende.cadastrar();
         model = view.cadastrar();
+        endao.cadastrar(model.getEndereco());
         dao.cadastrar(model);
+
     }
 
 }

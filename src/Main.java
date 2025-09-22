@@ -30,6 +30,7 @@ public class Main {
         ClienteControll controller = new ClienteControll();
         ClienteView view = new ClienteView();
 
+
         controller.cadastrar();
 
          /*Scanner sc = new Scanner(System.in);

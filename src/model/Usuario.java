@@ -16,7 +16,7 @@ public class Usuario {
     private String senha;
     private Endereco endereco;
 
-    public Usuario() {
+    public Usuario(){
     }
 
     public Usuario(String nome, String cpf, String telefone, String email, String senha, Endereco endereco) {
@@ -26,6 +26,9 @@ public class Usuario {
         this.email = email;
         this.senha = senha;
         this.endereco = endereco;
+    }
+
+    public Usuario(String nome, String cpf, String telefone, String email, String senha) {
     }
 
     public Endereco getEndereco() {

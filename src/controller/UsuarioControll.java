@@ -15,14 +15,14 @@ public class UsuarioControll {
     }
     
     
-    public void cadastrar(String nome, String cpf, String telefone, String email, String senha) {
+    /*public void cadastrar(String nome, String cpf, String telefone, String email, String senha) {
         
         Usuario u = new Usuario(nome, cpf, telefone, email, senha);
         
         dao.cadastrar(u);
         view.cadastrar();
     
-    }
+    }*/
     
     public void listar() { 
         view.listar(dao.listar());

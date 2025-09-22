@@ -20,6 +20,7 @@ public class EnderecoView {
     private int numero;
     private String cidade;
     public EnderecoView() {
+
     }
 
     public Endereco cadastrar(){
@@ -29,10 +30,12 @@ public class EnderecoView {
         bairro = sc.nextLine();
         System.out.println("Digite o numero: ");
         numero = sc.nextInt();
+        sc.nextLine();
         System.out.println("Digite a cidade: ");
         cidade = sc.nextLine();
 
-        
+        Endereco endereco = new Endereco(rua, numero, bairro, cidade);
 
+        return endereco;
     }
 }

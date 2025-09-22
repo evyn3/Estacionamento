@@ -4,10 +4,24 @@
  */
 package controller;
 
+import dao.EnderecoDao;
+import model.Endereco;
+import view.EnderecoView;
+
 /**
  *
  * @author curso
  */
 public class EnderecoControll {
-    
+    private Endereco model = new Endereco();
+    private EnderecoView view = new EnderecoView();
+    private EnderecoDao dao = new EnderecoDao();
+
+    public EnderecoControll() {
+    }
+
+    public void cadastrar(){
+        model = view.cadastrar();
+        dao.cadastrar(model);
+    }
 }

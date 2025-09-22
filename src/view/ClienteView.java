@@ -5,6 +5,7 @@
 package view;
 
 import model.Cliente;
+import model.Endereco;
 
 import java.util.Scanner;
 
@@ -15,6 +16,8 @@ import java.util.Scanner;
 public class ClienteView {
 
     Scanner sc = new Scanner(System.in);
+
+    EnderecoView endView = new EnderecoView();
 
     public ClienteView() {
 
@@ -29,6 +32,7 @@ public class ClienteView {
         String senha;
         String cnh;
         double credito;
+        Endereco endereco;
 
         System.out.println("Digite seu nome: ");
         nome = sc.nextLine();
@@ -45,7 +49,10 @@ public class ClienteView {
         System.out.println("Digite seu credito: ");
         credito = sc.nextDouble();
 
-        Cliente cliente = new Cliente(nome, cpf, telefone, email, senha, cnh, credito);
+        endereco = endView.cadastrar();
+
+
+        Cliente cliente = new Cliente(nome, cpf, telefone, email, senha, endereco, cnh, credito);
 
         return cliente;
 

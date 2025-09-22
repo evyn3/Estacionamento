@@ -60,9 +60,37 @@ public class EnderecoDao {
             e.printStackTrace();
         } finally {
             DB.closeStatment(ps);
-            DB.closeConnection();
-            DB.closeConnection();
+            DB.closeResultSet(rs);
+            //DB.closeConnection();
+            //DB.closeConnection();
         }
+
+
     }
+
+    /*public void listar(){
+        //LISTAR
+
+        try{
+            conn = DB.getConnection();//tenta iniciar a conexão
+
+            st = conn.createStatement();//cria a conexão com o banco
+
+            rs = st.executeQuery("select * from endereco");//cria consulta com o banco
+
+            while (rs.next()){ //percorre o banco
+                System.out.println(rs.getInt("id_end") + " - " + rs.getString("rua") + rs.getString("bairro") + rs.getInt("numero") + rs.getString("cidade"));
+            }
+
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
+        finally {
+            DB.closeStatment(st);
+            DB.closeResultSet(rs);
+            //DB.closeConnection();
+
+        }
+    }*/
 
 }

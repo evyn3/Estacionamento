@@ -30,7 +30,7 @@ public class ClienteDao {
             conn = DB.getConnection();//tenta iniciar a conexão
             ps = conn.prepareStatement(
                     "INSERT INTO cliente"
-                            + "(cpf, nome, email, telefone, cnh, senha, credito)"
+                            + "(cpf, nome, email, telefone, cnh, senha, credito, id_end)"
                             + "VALUES "
                             + "(?, ?, ?, ?, ?, ?, ?, ?)"
             );
@@ -42,6 +42,7 @@ public class ClienteDao {
             ps.setString(5, cliente.getCnh());
             ps.setString(6, cliente.getSenha());
             ps.setDouble(7, cliente.getCredito());
+            ps.setInt(8, cliente.getEndereco().getId());
 
 
             int rowsAffected = ps.executeUpdate(); //para executar
@@ -54,7 +55,7 @@ public class ClienteDao {
         } finally {
             DB.closeStatment(ps);
             DB.closeConnection();
-            DB.closeConnection();
+            DB.closeResultSet(rs);
         }
     }
 
