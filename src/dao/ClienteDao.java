@@ -6,9 +6,11 @@ package dao;
 
 import db.DB;
 import model.Cliente;
+import model.Endereco;
 
 import java.sql.*;
 import java.text.ParseException;
+import java.util.ArrayList;
 
 /**
  *
@@ -58,6 +60,70 @@ public class ClienteDao {
             DB.closeResultSet(rs);
         }
     }
+
+    public ArrayList<Cliente> listar(){
+        //LISTAR
+        ArrayList<Cliente> lista = new ArrayList<>();
+        Cliente cliente;
+
+        try{
+            conn = DB.getConnection();//tenta iniciar a conexão
+
+            st = conn.createStatement();//cria a conexão com o banco
+
+            rs = st.executeQuery("select * from cliente");//cria consulta com o banco
+
+            while (rs.next()){ //percorre o banco
+
+                String cpf = rs.getString("cpf");
+                String nome = rs.getString("nome");
+                String email = rs.getString("email");
+                String telefone = rs.getString("telefone");
+                String cnh = rs.getString("cnh");
+                String senha = rs.getString("senha");
+                double credito = rs.getDouble("credito");
+                int idend = rs.getInt("id_end");
+
+
+
+
+                cliente = new Cliente(nome, cpf, telefone, email, senha, cnh, credito);
+                lista.add(cliente);
+                //System.out.println(rs.getInt("id_end") + " - " + rs.getString("rua") + rs.getString("bairro") + rs.getInt("numero") + rs.getString("cidade"));
+            }
+
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
+        finally {
+            DB.closeStatment(st);
+            DB.closeResultSet(rs);
+            //DB.closeConnection();
+
+        }
+
+        return lista;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     /*public void cadastrar(String nome, String cpf, String telefone, String email, String senha, String cnh, double credito){

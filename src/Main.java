@@ -1,7 +1,9 @@
 
 import controller.ClienteControll;
+import controller.EnderecoControll;
 import controller.UsuarioControll;
 import dao.ClienteDao;
+import dao.EnderecoDao;
 import dao.UsuarioDao;
 import java.util.Scanner;
 
@@ -26,12 +28,65 @@ public class Main {
 
         //--enable-native-access=ALL-UNNAMED
 
-        ClienteDao dao = new ClienteDao();
+        //--------------------------------------CADASTRAR CLIENTE---------------------------------
+        /*ClienteDao dao = new ClienteDao();
         ClienteControll controller = new ClienteControll();
         ClienteView view = new ClienteView();
 
+        controller.cadastrar();*/
+        //-----------------------------------------------------------------------------------------
 
-        controller.cadastrar();
+        //--------------------------------------LISTAR ENDEREÇOS-----------------------------------
+
+        /*EnderecoControll enderecoControll = new EnderecoControll();
+        enderecoControll.listar();*/
+
+        //-----------------------------------------------------------------------------------------
+
+        //--------------------------------------LISTAR ENDEREÇOS-----------------------------------
+
+        ClienteControll clienteControll = new ClienteControll();
+        clienteControll.listar();
+
+        //-----------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
          /*Scanner sc = new Scanner(System.in);
         UsuarioDao dao = new UsuarioDao();

@@ -27,6 +27,12 @@ public class Cliente extends Usuario{
         this.credito = credito;
     }
 
+    public Cliente(String nome, String cpf, String telefone, String email, String senha, String cnh, double credito) {
+        super(nome, cpf, telefone, email, senha);
+        this.cnh = cnh;
+        this.credito = credito;
+    }
+
     public boolean reservarVaga() {
     return true;}
 

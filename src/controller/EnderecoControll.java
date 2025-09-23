@@ -24,4 +24,8 @@ public class EnderecoControll {
         model = view.cadastrar();
         dao.cadastrar(model);
     }
+
+    public void listar(){
+        view.listar(dao.listar());
+    }
 }

@@ -33,4 +33,8 @@ public class ClienteControll {
 
     }
 
+    public void listar(){
+        view.listar(dao.listar());
+    }
+
 }

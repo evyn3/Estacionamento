@@ -7,6 +7,7 @@ package view;
 import model.Cliente;
 import model.Endereco;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -56,5 +57,13 @@ public class ClienteView {
 
         return cliente;
 
+    }
+
+    public void listar(ArrayList<Cliente> clientes){
+
+        System.out.println("---------------CLIENTES---------------");
+        for (Cliente cl : clientes){
+            System.out.println("CPF: " + cl.getCpf() + "\nNome: " + cl.getNome() + "\n");
+        }
     }
 }

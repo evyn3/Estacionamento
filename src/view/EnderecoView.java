@@ -6,6 +6,7 @@ package view;
 
 import model.Endereco;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -37,5 +38,17 @@ public class EnderecoView {
         Endereco endereco = new Endereco(rua, numero, bairro, cidade);
 
         return endereco;
+    }
+
+    public void listar(ArrayList<Endereco> enderecos){
+        System.out.println("-----------------LISTA DE ENDEREÇOS------------------");
+        for (Endereco end: enderecos){
+            System.out.println("ID: " + end.getId()
+                            + "\nRua: " + end.getRua()
+                            + "\nNumero: " + end.getNumero()
+                            + "\nBairro: " + end.getBairro()
+                            + "\nCidade: " + end.getCidade()
+                            + "\n");
+        }
     }
 }

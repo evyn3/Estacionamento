@@ -9,6 +9,7 @@ import model.Cliente;
 import model.Endereco;
 
 import java.sql.*;
+import java.util.ArrayList;
 
 /**
  *
@@ -68,8 +69,10 @@ public class EnderecoDao {
 
     }
 
-    /*public void listar(){
+    public ArrayList<Endereco> listar(){
         //LISTAR
+        ArrayList<Endereco> lista = new ArrayList<>();
+        Endereco endereco;
 
         try{
             conn = DB.getConnection();//tenta iniciar a conexão
@@ -79,7 +82,16 @@ public class EnderecoDao {
             rs = st.executeQuery("select * from endereco");//cria consulta com o banco
 
             while (rs.next()){ //percorre o banco
-                System.out.println(rs.getInt("id_end") + " - " + rs.getString("rua") + rs.getString("bairro") + rs.getInt("numero") + rs.getString("cidade"));
+
+                int id = rs.getInt("id_end");
+                String rua = rs.getString("rua");
+                int numero = rs.getInt("numero");
+                String bairro = rs.getString("bairro");
+                String cidade = rs.getString("cidade");
+
+                endereco = new Endereco(id, rua, numero, bairro, cidade);
+                lista.add(endereco);
+                //System.out.println(rs.getInt("id_end") + " - " + rs.getString("rua") + rs.getString("bairro") + rs.getInt("numero") + rs.getString("cidade"));
             }
 
         } catch (SQLException e){
@@ -91,6 +103,8 @@ public class EnderecoDao {
             //DB.closeConnection();
 
         }
-    }*/
+
+        return lista;
+    }
 
 }
