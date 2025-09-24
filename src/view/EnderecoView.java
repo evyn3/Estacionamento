@@ -69,4 +69,14 @@ public class EnderecoView {
                 + "\nCidade: " + end.getCidade()
                 + "\n");
     }
+
+    public int pegAlterar(){
+        System.out.println("O que deseja alterar? ");
+        System.out.println("1 - numero\n2 - rua\n3 - bairro\n4 - cidade");
+        System.out.println(": ");
+        int var = sc.nextInt();
+
+        return var;
+    }
+    
 }

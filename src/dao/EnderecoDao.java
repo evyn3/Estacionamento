@@ -8,6 +8,7 @@ import db.DB;
 import model.Cliente;
 import model.Endereco;
 
+import java.lang.classfile.instruction.SwitchCase;
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -144,6 +145,92 @@ public class EnderecoDao {
         }
 
         return end;
+    }
+
+    public void alterar(int id, int var, String x){
+        PreparedStatement ps = null;
+        switch (var){
+            case 1:
+                try{
+
+                    ps = conn.prepareStatement( //prepareStatement: prepara um comando SQL
+                            "UPDATE endereco "
+                                    + "SET numero + ?");
+                    ps.setInt(1, Integer.parseInt(x));
+
+                    int rowsAffected = ps.executeUpdate(); //executa a atualização no banco de dados
+
+                    //System.out.println("Finalizado " + rowsAffected); //mostra as linhas afetadas
+
+                }catch (SQLException e){
+                    e.printStackTrace(); //trata a exceção
+                } finally {
+                    //DB.closeStatment(st);
+                    //DB.closeConnection();
+                }
+                break;
+
+            case 2:
+                try{
+                    ps = conn.prepareStatement( //prepareStatement: prepara um comando SQL
+                            "UPDATE endereco "
+                                    + "SET rua + ?");
+                    ps.setString(1, x);
+
+                    int rowsAffected = ps.executeUpdate(); //executa a atualização no banco de dados
+
+                    //System.out.println("Finalizado " + rowsAffected); //mostra as linhas afetadas
+
+                }catch (SQLException e){
+                    e.printStackTrace(); //trata a exceção
+                } finally {
+                    //DB.closeStatment(st);
+                    //DB.closeConnection();
+                }
+
+                break;
+
+            case 3:
+                try{
+                    ps = conn.prepareStatement( //prepareStatement: prepara um comando SQL
+                            "UPDATE endereco "
+                                    + "SET bairro + ?");
+                    ps.setString(1, x);
+
+                    int rowsAffected = ps.executeUpdate(); //executa a atualização no banco de dados
+
+                    //System.out.println("Finalizado " + rowsAffected); //mostra as linhas afetadas
+
+                }catch (SQLException e){
+                    e.printStackTrace(); //trata a exceção
+                } finally {
+                    //DB.closeStatment(st);
+                    //DB.closeConnection();
+                }
+
+                break;
+
+            case 4:
+                try{
+                    ps = conn.prepareStatement( //prepareStatement: prepara um comando SQL
+                            "UPDATE endereco "
+                                    + "SET cidade + ?");
+                    ps.setString(1, x);
+
+                    int rowsAffected = ps.executeUpdate(); //executa a atualização no banco de dados
+
+                    //System.out.println("Finalizado " + rowsAffected); //mostra as linhas afetadas
+
+                }catch (SQLException e){
+                    e.printStackTrace(); //trata a exceção
+                } finally {
+                    //DB.closeStatment(st);
+                    //DB.closeConnection();
+                }
+
+                break;
+        }
+
     }
 
 }

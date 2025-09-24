@@ -57,7 +57,7 @@ public class Main {
 
         //-----------------------------------------------------------------------------------------
 
-        //--------------------------------------LISTAR CLIENTES----------------------------------- 
+        //--------------------------------------LISTAR CLIENTES-----------------------------------
 
         ClienteControll clienteControll = new ClienteControll();
         clienteControll.pesquisar();
