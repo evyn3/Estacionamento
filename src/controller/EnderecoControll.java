@@ -28,4 +28,8 @@ public class EnderecoControll {
     public void listar(){
         view.listar(dao.listar());
     }
+
+    public void pesquisar(){
+        view.mensagemPesq(dao.pesquisar(view.pesquisar()));
+    }
 }

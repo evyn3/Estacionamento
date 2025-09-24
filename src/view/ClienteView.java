@@ -66,4 +66,22 @@ public class ClienteView {
             System.out.println("CPF: " + cl.getCpf() + "\nNome: " + cl.getNome() + "\n");
         }
     }
+
+    public String pesquisar(){
+        String cpf;
+        System.out.print("Digite o cpf do cliente: ");
+        cpf = sc.nextLine();
+
+        return cpf;
+    }
+
+    public void mensagemPesq(Cliente cliente){
+        System.out.println("CPF: " + cliente.getCpf()
+                    + "\nNome: " + cliente.getNome()
+                    + "\nEmail: " + cliente.getEmail()
+                    + "\nTelefone: " + cliente.getTelefone()
+                    + "\nCNH: " + cliente.getCnh()
+                    + "\nCredito: " + cliente.getCredito());
+
+    }
 }

@@ -51,4 +51,22 @@ public class EnderecoView {
                             + "\n");
         }
     }
+
+    public int pesquisar(){
+
+        int id;
+        System.out.print("Digite o id do endereco: ");
+        id = sc.nextInt();
+
+        return id;
+    }
+
+    public void mensagemPesq(Endereco end){
+        System.out.println("ID: " + end.getId()
+                + "\nRua: " + end.getRua()
+                + "\nNumero: " + end.getNumero()
+                + "\nBairro: " + end.getBairro()
+                + "\nCidade: " + end.getCidade()
+                + "\n");
+    }
 }

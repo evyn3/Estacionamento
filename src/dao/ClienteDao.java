@@ -22,6 +22,8 @@ public class ClienteDao {
     Statement st = null; //interface que representa uma instrução em sql para execultar em um banco de dados
     ResultSet rs = null; //interface que representa o conjuto dos resultados de uma conculta em um banco de dados
 
+    EnderecoDao endDao = new EnderecoDao();
+
     public ClienteDao() {
 
     }
@@ -84,10 +86,10 @@ public class ClienteDao {
                 double credito = rs.getDouble("credito");
                 int idend = rs.getInt("id_end");
 
+                Endereco endereco = endDao.pesquisar(idend);
 
 
-
-                cliente = new Cliente(nome, cpf, telefone, email, senha, cnh, credito);
+                cliente = new Cliente(nome, cpf, telefone, email, senha, endereco, cnh, credito);
                 lista.add(cliente);
                 //System.out.println(rs.getInt("id_end") + " - " + rs.getString("rua") + rs.getString("bairro") + rs.getInt("numero") + rs.getString("cidade"));
             }
@@ -103,6 +105,50 @@ public class ClienteDao {
         }
 
         return lista;
+    }
+
+    public Cliente pesquisar(String idcpf){
+        Cliente clie = new Cliente();
+
+        try{
+            conn = DB.getConnection();//tenta iniciar a conexão
+
+            st = conn.createStatement();//cria a conexão com o banco
+
+            rs = st.executeQuery("select * from cliente");//cria consulta com o banco
+
+            while (rs.next()){ //percorre o banco
+
+                String cpf = rs.getString("cpf");
+
+                if(cpf.equals(idcpf)){
+                    String nome = rs.getString("nome");
+                    String email = rs.getString("email");
+                    String telefone = rs.getString("telefone");
+                    String cnh = rs.getString("cnh");
+                    String senha = rs.getString("senha");
+                    double credito = rs.getDouble("credito");
+                    int idend = rs.getInt("id_end");
+
+                    Endereco endereco = endDao.pesquisar(idend);
+                    clie = new Cliente(nome, cpf, telefone, email, senha, endereco, cnh, credito);
+
+                }
+
+                //System.out.println(rs.getInt("id_end") + " - " + rs.getString("rua") + rs.getString("bairro") + rs.getInt("numero") + rs.getString("cidade"));
+            }
+
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
+        finally {
+            DB.closeStatment(st);
+            DB.closeResultSet(rs);
+            //DB.closeConnection();
+
+        }
+
+        return clie;
     }
 
 

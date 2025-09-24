@@ -107,4 +107,43 @@ public class EnderecoDao {
         return lista;
     }
 
+    public Endereco pesquisar(int id){
+
+        Endereco end = new Endereco();
+
+        try{
+            conn = DB.getConnection();//tenta iniciar a conexão
+
+            st = conn.createStatement();//cria a conexão com o banco
+
+            rs = st.executeQuery("select * from endereco");//cria consulta com o banco
+
+            while (rs.next()){ //percorre o banco
+
+                int ide = rs.getInt("id_end");
+
+                if (id == ide){
+                    String rua = rs.getString("rua");
+                    int numero = rs.getInt("numero");
+                    String bairro = rs.getString("bairro");
+                    String cidade = rs.getString("cidade");
+                    end = new Endereco(ide, rua, numero, bairro, cidade);
+                }
+
+                //System.out.println(rs.getInt("id_end") + " - " + rs.getString("rua") + rs.getString("bairro") + rs.getInt("numero") + rs.getString("cidade"));
+            }
+
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
+        finally {
+            DB.closeStatment(st);
+            DB.closeResultSet(rs);
+            //DB.closeConnection();
+
+        }
+
+        return end;
+    }
+
 }

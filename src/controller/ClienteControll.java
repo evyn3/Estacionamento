@@ -37,4 +37,8 @@ public class ClienteControll {
         view.listar(dao.listar());
     }
 
+    public void pesquisar(){
+        view.mensagemPesq(dao.pesquisar(view.pesquisar()));
+    }
+
 }
