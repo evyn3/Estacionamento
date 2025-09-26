@@ -59,11 +59,17 @@ public class Main {
 
         //--------------------------------------LISTAR CLIENTES-----------------------------------
 
-        ClienteControll clienteControll = new ClienteControll();
-        clienteControll.pesquisar();
+        //ClienteControll clienteControll = new ClienteControll();
+        //clienteControll.pesquisar();
 
         //-----------------------------------------------------------------------------------------
 
+        //--------------------------------------ALTERAR ENDEREÇOS-----------------------------------
+
+        EnderecoControll enderecoControll = new EnderecoControll();
+        enderecoControll.alterar();
+
+        //-----------------------------------------------------------------------------------------
 
 
 

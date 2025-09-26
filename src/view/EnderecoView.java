@@ -70,13 +70,38 @@ public class EnderecoView {
                 + "\n");
     }
 
-    public int pegAlterar(){
+    public int pergAlterar(){
         System.out.println("O que deseja alterar? ");
         System.out.println("1 - numero\n2 - rua\n3 - bairro\n4 - cidade");
         System.out.println(": ");
         int var = sc.nextInt();
+        sc.nextLine();
 
         return var;
     }
-    
+    public String respAlterar(int var){
+        switch (var){
+            case 1:
+                System.out.println("Digite o número: ");
+                break;
+            case 2:
+                System.out.println("Digite a rua: ");
+                break;
+            case 3:
+                System.out.println("Digite o bairro: ");
+                break;
+            case 4:
+                System.out.println("Digite a cidade: ");
+                break;
+        }
+
+        String x = sc.nextLine();
+
+        return x;
+    }
+
+    public void mensagemAlt(){
+        System.out.println("Alteração feita com sucesso!!");
+    }
+
 }

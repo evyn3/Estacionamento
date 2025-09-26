@@ -138,8 +138,8 @@ public class EnderecoDao {
             e.printStackTrace();
         }
         finally {
-            DB.closeStatment(st);
-            DB.closeResultSet(rs);
+            //DB.closeStatment(st);
+            //DB.closeResultSet(rs);
             //DB.closeConnection();
 
         }
@@ -147,88 +147,67 @@ public class EnderecoDao {
         return end;
     }
 
+
     public void alterar(int id, int var, String x){
         PreparedStatement ps = null;
-        switch (var){
-            case 1:
-                try{
+        try {
+            conn = DB.getConnection();//tenta iniciar a conexão
+            switch (var) {
+                case 1:
 
                     ps = conn.prepareStatement( //prepareStatement: prepara um comando SQL
-                            "UPDATE endereco "
-                                    + "SET numero + ?");
+                            "UPDATE endereco " + "SET numero = ? WHERE id_end = ?");
                     ps.setInt(1, Integer.parseInt(x));
+                    ps.setInt(2, id);
 
-                    int rowsAffected = ps.executeUpdate(); //executa a atualização no banco de dados
+                    ps.executeUpdate(); //executa a atualização no banco de dados
 
                     //System.out.println("Finalizado " + rowsAffected); //mostra as linhas afetadas
 
-                }catch (SQLException e){
-                    e.printStackTrace(); //trata a exceção
-                } finally {
-                    //DB.closeStatment(st);
-                    //DB.closeConnection();
-                }
-                break;
+                    break;
 
-            case 2:
-                try{
+                case 2:
                     ps = conn.prepareStatement( //prepareStatement: prepara um comando SQL
-                            "UPDATE endereco "
-                                    + "SET rua + ?");
+                            "UPDATE endereco " + "SET rua = ? WHERE id_end = ?");
                     ps.setString(1, x);
+                    ps.setInt(2, id);
 
-                    int rowsAffected = ps.executeUpdate(); //executa a atualização no banco de dados
+                    ps.executeUpdate(); //executa a atualização no banco de dados
 
                     //System.out.println("Finalizado " + rowsAffected); //mostra as linhas afetadas
 
-                }catch (SQLException e){
-                    e.printStackTrace(); //trata a exceção
-                } finally {
-                    //DB.closeStatment(st);
-                    //DB.closeConnection();
-                }
+                    break;
 
-                break;
-
-            case 3:
-                try{
+                case 3:
                     ps = conn.prepareStatement( //prepareStatement: prepara um comando SQL
-                            "UPDATE endereco "
-                                    + "SET bairro + ?");
+                            "UPDATE endereco " + "SET bairro = ? WHERE id_end = ?");
                     ps.setString(1, x);
+                    ps.setInt(2, id);
 
-                    int rowsAffected = ps.executeUpdate(); //executa a atualização no banco de dados
+                    ps.executeUpdate(); //executa a atualização no banco de dados
 
                     //System.out.println("Finalizado " + rowsAffected); //mostra as linhas afetadas
 
-                }catch (SQLException e){
-                    e.printStackTrace(); //trata a exceção
-                } finally {
-                    //DB.closeStatment(st);
-                    //DB.closeConnection();
-                }
 
-                break;
+                    break;
 
-            case 4:
-                try{
+                case 4:
                     ps = conn.prepareStatement( //prepareStatement: prepara um comando SQL
-                            "UPDATE endereco "
-                                    + "SET cidade + ?");
+                            "UPDATE endereco " + "SET cidade = ? WHERE id_end = ?");
                     ps.setString(1, x);
+                    ps.setInt(2, id);
 
-                    int rowsAffected = ps.executeUpdate(); //executa a atualização no banco de dados
+                    ps.executeUpdate(); //executa a atualização no banco de dados
 
                     //System.out.println("Finalizado " + rowsAffected); //mostra as linhas afetadas
 
-                }catch (SQLException e){
-                    e.printStackTrace(); //trata a exceção
-                } finally {
-                    //DB.closeStatment(st);
-                    //DB.closeConnection();
-                }
-
-                break;
+                    break;
+            }
+        }catch (SQLException e){
+            e.printStackTrace(); //trata a exceção
+        } finally {
+            //DB.closeStatment(ps);
+            //DB.closeConnection();
         }
 
     }
