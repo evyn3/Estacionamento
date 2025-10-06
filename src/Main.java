@@ -29,11 +29,11 @@ public class Main {
         //--enable-native-access=ALL-UNNAMED
 
         //--------------------------------------CADASTRAR CLIENTE---------------------------------
-        /*ClienteDao dao = new ClienteDao();
-        ClienteControll controller = new ClienteControll();
-        ClienteView view = new ClienteView();
+        //ClienteDao dao = new ClienteDao();
+        //ClienteControll controller = new ClienteControll();
+        //ClienteView view = new ClienteView();
 
-        controller.cadastrar();*/
+        //controller.cadastrar();
         //-----------------------------------------------------------------------------------------
 
         //--------------------------------------LISTAR ENDEREÇOS-----------------------------------
@@ -45,8 +45,8 @@ public class Main {
 
         //--------------------------------------LISTAR CLIENTES-----------------------------------
 
-        /*ClienteControll clienteControll = new ClienteControll();
-        clienteControll.listar();*/
+        //ClienteControll clienteControll = new ClienteControll();
+        //clienteControll.listar();
 
         //-----------------------------------------------------------------------------------------
 
@@ -66,13 +66,18 @@ public class Main {
 
         //--------------------------------------ALTERAR ENDEREÇOS-----------------------------------
 
-        EnderecoControll enderecoControll = new EnderecoControll();
-        enderecoControll.alterar();
+        //EnderecoControll enderecoControll = new EnderecoControll();
+        //enderecoControll.alterar();
 
+        //-----------------------------------------------------------------------------------------
+        
+        //--------------------------------------ALTERAR CLIENTE-----------------------------------
+        ClienteControll clienteControll = new ClienteControll();
+        clienteControll.alterar();
         //-----------------------------------------------------------------------------------------
 
 
-
+        
 
 
 

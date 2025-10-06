@@ -8,7 +8,7 @@ import db.DB;
 import model.Cliente;
 import model.Endereco;
 
-import java.lang.classfile.instruction.SwitchCase;
+//import java.lang.classfile.instruction.SwitchCase;
 import java.sql.*;
 import java.util.ArrayList;
 

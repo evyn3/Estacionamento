@@ -40,5 +40,18 @@ public class ClienteControll {
     public void pesquisar(){
         view.mensagemPesq(dao.pesquisar(view.pesquisar()));
     }
+    
+    public void alterar() {
+    String cpf = view.pesquisar(); // já tem método que pede CPF
+    String campo = view.escolherCampo();
+
+    if (campo.isEmpty()) {
+        System.out.println("Opção inválida!");
+        return;
+    }
+
+    String valor = view.novoValor();
+    dao.alterarCampo(cpf, campo, valor);
+}
 
 }

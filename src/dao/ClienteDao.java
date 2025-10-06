@@ -58,7 +58,7 @@ public class ClienteDao {
             e.printStackTrace();
         } finally {
             DB.closeStatment(ps);
-            DB.closeConnection();
+            //DB.closeConnection();
             DB.closeResultSet(rs);
         }
     }
@@ -151,7 +151,55 @@ public class ClienteDao {
         return clie;
     }
 
+     public void alterarCampo(String cpf, String campo, String novoValor) {
+    PreparedStatement ps = null;
 
+    try {
+        conn = DB.getConnection(); // inicia a conexão
+
+        switch (campo) {
+            case "nome":
+            case "email":
+            case "telefone":
+            case "cnh":
+            case "senha":
+                ps = conn.prepareStatement("UPDATE cliente SET " + campo + " = ? WHERE cpf = ?");
+                ps.setString(1, novoValor);
+                ps.setString(2, cpf);
+                break;
+
+            case "credito":
+                ps = conn.prepareStatement("UPDATE cliente SET credito = ? WHERE cpf = ?");
+                ps.setDouble(1, Double.parseDouble(novoValor));
+                ps.setString(2, cpf);
+                break;
+
+            case "id_end":
+                ps = conn.prepareStatement("UPDATE cliente SET id_end = ? WHERE cpf = ?");
+                ps.setString(1, novoValor);
+                ps.setString(2, cpf);
+                break;
+
+            default:
+                System.out.println("Campo inválido: " + campo);
+                return;
+        }
+
+        int rowsAffected = ps.executeUpdate();
+        if (rowsAffected > 0) {
+            System.out.println("Campo " + campo + " atualizado com sucesso!");
+        } else {
+            System.out.println("Nenhum cliente encontrado com este CPF.");
+        }
+
+    } catch (SQLException e) {
+        e.printStackTrace();
+    } finally {
+        DB.closeStatment(ps);
+    }
+}
+
+    
 
 
 
