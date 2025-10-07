@@ -84,4 +84,34 @@ public class ClienteView {
                     + "\nCredito: " + cliente.getCredito());
 
     }
+    
+    public String escolherCampo(){
+        System.out.println("Qual campo  deseja alterar ?");
+        System.out.println("1 - Nome");
+        System.out.println("2 - Email");
+        System.out.println("3 - Telefone");
+        System.out.println("4 - CNH");
+        System.out.println("5 -  Senha");
+        System.out.println("6 - Credito");
+    
+        int opcao = sc.nextInt();
+        sc.nextLine();
+    
+         return switch (opcao) {
+        case 1 -> "nome";
+        case 2 -> "email";
+        case 3 -> "telefone";
+        case 4 -> "cnh";
+        case 5 -> "senha";
+        case 6 -> "credito";
+        default -> "";
+    };
+ 
+    }
+    
+    public String novoValor() {
+    System.out.print("Digite o novo valor: ");
+    return sc.nextLine();
+}
+    
 }
