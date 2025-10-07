@@ -1,14 +1,18 @@
 
+import controller.AtendenteControll;
 import controller.ClienteControll;
 import controller.EnderecoControll;
 import controller.UsuarioControll;
+import dao.AtendenteDAO;
 import dao.ClienteDao;
 import dao.EnderecoDao;
 import dao.UsuarioDao;
 import java.util.Scanner;
 
+import model.Atendente;
 import model.Cliente;
 import model.Usuario;
+import view.AtendenteView;
 import view.ClienteView;
 import view.UsuarioView;
 
@@ -55,22 +59,31 @@ public class Main {
         /*EnderecoControll enderecoControll = new EnderecoControll();
         enderecoControll.pesquisar();*/
 
-        //-----------------------------------------------------------------------------------------
-
-        //--------------------------------------LISTAR CLIENTES-----------------------------------
-
-        //ClienteControll clienteControll = new ClienteControll();
-        //clienteControll.pesquisar();
-
-        //-----------------------------------------------------------------------------------------
+        //------------------------------------------------------------------------------------------
 
         //--------------------------------------ALTERAR ENDEREÇOS-----------------------------------
 
-        EnderecoControll enderecoControll = new EnderecoControll();
-        enderecoControll.alterar();
+        //EnderecoControll enderecoControll = new EnderecoControll();
+        //enderecoControll.alterar();
 
         //-----------------------------------------------------------------------------------------
 
+        //--------------------------------------CADASTRAR CLIENTES-----------------------------------
+
+        //AtendenteDAO dao = new AtendenteDAO();
+        //AtendenteControll controller = new AtendenteControll();
+        //AtendenteView view = new AtendenteView();
+
+        //controller.cadastrar();
+
+        //-----------------------------------------------------------------------------------------
+
+        //--------------------------------------LISTAR ATENDENTES-----------------------------------
+
+        AtendenteControll atendenteControll = new AtendenteControll();
+        atendenteControll.listar();
+
+        //-----------------------------------------------------------------------------------------
 
 
 
