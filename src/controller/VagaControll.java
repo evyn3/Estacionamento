@@ -17,6 +17,11 @@ public class VagaControll {
     public void pesquisar(){
         view.mensagemPesq(dao.pesquisar(view.pesquisar()));
     }
+    
+    public void listar(){
+        view.listar(dao.listar());
+    }
+
 
  
 }

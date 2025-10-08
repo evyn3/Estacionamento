@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import model.Vaga;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 
 public class VagaDAO {
@@ -51,4 +52,42 @@ public class VagaDAO {
         return vaga;
         
     }
+    
+    public ArrayList<Vaga> listar(){
+        
+        ArrayList<Vaga> lista = new ArrayList<>();
+        Vaga vaga;
+
+        try{
+            conn = DB.getConnection();
+
+            st = conn.createStatement();
+
+            rs = st.executeQuery("select * from vaga");//cria consulta com o banco
+
+            while (rs.next()){ //percorre o banco
+                
+                
+               int numero = rs.getInt("numeroVaga");
+               String status = rs.getString("statusVaga");
+               String tipo = rs.getString("tipo");
+
+                vaga = new Vaga( numero,  tipo, status);
+                lista.add(vaga);
+             
+            }
+
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
+        finally {
+            DB.closeStatment(st);
+            DB.closeResultSet(rs);
+            //DB.closeConnection();
+
+        }
+
+        return lista;
+    }
+
 }

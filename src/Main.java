@@ -2,6 +2,7 @@
 import controller.ClienteControll;
 import controller.EnderecoControll;
 import controller.UsuarioControll;
+import controller.VagaControll;
 import dao.ClienteDao;
 import dao.EnderecoDao;
 import dao.UsuarioDao;
@@ -71,6 +72,19 @@ public class Main {
 
         //-----------------------------------------------------------------------------------------
 
+
+        
+        //--------------------------------------PESQUISAR VAGAS-------------------------------------
+        
+        //VagaControll vagacontroll = new VagaControll();
+        //vagacontroll.pesquisar();
+        
+        //-----------------------------------------------------------------------------------------
+
+        VagaControll vagacontroll = new VagaControll();
+        vagacontroll.listar();
+        
+        
 
 
 

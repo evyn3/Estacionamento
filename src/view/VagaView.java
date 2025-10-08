@@ -1,5 +1,6 @@
 package view;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 import model.Vaga;
 
@@ -30,6 +31,16 @@ public class VagaView {
                 );
     }
     
-    
+    public void listar(ArrayList<Vaga> vagas){
+        System.out.println("-----------------LISTA DE VAGAS------------------");
+        for (Vaga v: vagas){
+            
+            System.out.println("Numero da Vaga: " + v.getNumeroDeVaga()
+                + "\nStatus: " + v.getStatus()
+                + "\nTipo: " + v.getTipo()
+                );
+        }
+    }
+
     
 }
