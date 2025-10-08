@@ -1,6 +1,7 @@
 package view;
 
 import model.Atendente;
+import model.Cliente;
 import model.Endereco;
 
 import java.util.ArrayList;
@@ -54,7 +55,19 @@ public class AtendenteView {
         }
     }
 
+    public int pesquisar(){
+        int id;
+        System.out.print("Digite o id do funcionário: ");
+        id = sc.nextInt();
 
+        return id;
+    }
 
+    public void mensagemPesq(Atendente atendente){
+        System.out.println("ID: " + atendente.getId()+ "\nCPF: " + atendente.getCpf()
+                + "\nNome: " + atendente.getNome()
+                + "\nEmail: " + atendente.getEmail()
+                + "\nTelefone: " + atendente.getTelefone());
+    }
 
 }

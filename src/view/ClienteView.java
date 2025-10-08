@@ -86,7 +86,7 @@ public class ClienteView {
     }
     
     public String escolherCampo(){
-        System.out.println("Qual campo  deseja alterar ?");
+        System.out.println("Qual campo deseja alterar ?");
         System.out.println("1 - Nome");
         System.out.println("2 - Email");
         System.out.println("3 - Telefone");

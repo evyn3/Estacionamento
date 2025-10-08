@@ -28,6 +28,8 @@ public class AtendenteControll {
             view.listar(dao.listar());
         }
 
+        public void pesquisar(){ view.mensagemPesq(dao.pesquisar(view.pesquisar()));}
+
         /*public void pesquisar(){
             view.mensagemPesq(dao.pesquisar(view.pesquisar()));
         }*/

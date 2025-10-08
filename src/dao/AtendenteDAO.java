@@ -2,6 +2,7 @@ package dao;
 
 import db.DB;
 import model.Atendente;
+import model.Cliente;
 import model.Endereco;
 
 import java.sql.*;
@@ -103,6 +104,42 @@ public class AtendenteDAO {
         }
 
         return lista;
+    }
+
+    public Atendente pesquisar(int id) {
+        Atendente atendente = new Atendente();
+
+        try {
+            conn = DB.getConnection();
+            st = conn.createStatement();
+
+            rs = st.executeQuery("select * from funcionario");
+
+            while (rs.next()) {
+
+                int id_f = rs.getInt("id_f");
+
+                if (id_f == id) {
+                    String cpf = rs.getString("cpf");
+                    String nome = rs.getString("nome");
+                    String email = rs.getString("email");
+                    String telefone = rs.getString("telefone");
+                    String senha = rs.getString("senha");
+                    int idend = rs.getInt("id_end");
+
+                    Endereco endereco = endDao.pesquisar(idend);
+
+                    atendente = new Atendente(nome, cpf, telefone, email, senha, endereco, id_f);
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+
+        } finally {
+            DB.closeStatment(st);
+            DB.closeResultSet(rs);
+        }
+        return atendente;
     }
 
     /*public Cliente pesquisar(String idcpf) {

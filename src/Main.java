@@ -1,4 +1,5 @@
 
+import controller.AtendenteControll;
 import controller.ClienteControll;
 import controller.EnderecoControll;
 import controller.UsuarioControll;
@@ -69,6 +70,13 @@ public class Main {
 
         //EnderecoControll enderecoControll = new EnderecoControll();
         //enderecoControll.alterar();
+
+        //-----------------------------------------------------------------------------------------
+
+        //--------------------------------PESQUISAR ATENDENTES------------------------------------
+
+        AtendenteControll atendenteControll = new AtendenteControll();
+        atendenteControll.pesquisar();
 
         //-----------------------------------------------------------------------------------------
 

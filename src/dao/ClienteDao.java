@@ -28,6 +28,49 @@ public class ClienteDao {
 
     }
 
+    public Cliente pesquisar(String idcpf){
+        Cliente clie = new Cliente();
+
+        try{
+            conn = DB.getConnection();//tenta iniciar a conexão
+            st = conn.createStatement();//cria a conexão com o banco
+
+            rs = st.executeQuery("select * from cliente");//cria consulta com o banco
+
+            while (rs.next()){ //percorre o banco
+
+                String cpf = rs.getString("cpf");
+
+                if(cpf.equals(idcpf)){
+                    String nome = rs.getString("nome");
+                    String email = rs.getString("email");
+                    String telefone = rs.getString("telefone");
+                    String cnh = rs.getString("cnh");
+                    String senha = rs.getString("senha");
+                    double credito = rs.getDouble("credito");
+                    int idend = rs.getInt("id_end");
+
+                    Endereco endereco = endDao.pesquisar(idend);
+                    clie = new Cliente(nome, cpf, telefone, email, senha, endereco, cnh, credito);
+
+                }
+
+                //System.out.println(rs.getInt("id_end") + " - " + rs.getString("rua") + rs.getString("bairro") + rs.getInt("numero") + rs.getString("cidade"));
+            }
+
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
+        finally {
+            DB.closeStatment(st);
+            DB.closeResultSet(rs);
+            //DB.closeConnection();
+
+        }
+
+        return clie;
+    }
+
     public void cadastrar(Cliente cliente){
         PreparedStatement ps = null;//para inserir dados no banco
         try{
@@ -107,49 +150,6 @@ public class ClienteDao {
         return lista;
     }
 
-    public Cliente pesquisar(String idcpf){
-        Cliente clie = new Cliente();
-
-        try{
-            conn = DB.getConnection();//tenta iniciar a conexão
-
-            st = conn.createStatement();//cria a conexão com o banco
-
-            rs = st.executeQuery("select * from cliente");//cria consulta com o banco
-
-            while (rs.next()){ //percorre o banco
-
-                String cpf = rs.getString("cpf");
-
-                if(cpf.equals(idcpf)){
-                    String nome = rs.getString("nome");
-                    String email = rs.getString("email");
-                    String telefone = rs.getString("telefone");
-                    String cnh = rs.getString("cnh");
-                    String senha = rs.getString("senha");
-                    double credito = rs.getDouble("credito");
-                    int idend = rs.getInt("id_end");
-
-                    Endereco endereco = endDao.pesquisar(idend);
-                    clie = new Cliente(nome, cpf, telefone, email, senha, endereco, cnh, credito);
-
-                }
-
-                //System.out.println(rs.getInt("id_end") + " - " + rs.getString("rua") + rs.getString("bairro") + rs.getInt("numero") + rs.getString("cidade"));
-            }
-
-        } catch (SQLException e){
-            e.printStackTrace();
-        }
-        finally {
-            DB.closeStatment(st);
-            DB.closeResultSet(rs);
-            //DB.closeConnection();
-
-        }
-
-        return clie;
-    }
 
      public void alterarCampo(String cpf, String campo, String novoValor) {
     PreparedStatement ps = null;
