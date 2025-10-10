@@ -8,7 +8,7 @@ import java.io.FileInputStream; //ler
 public class DB {
 
     private static Connection conn = null;//instancia uma conexão
-
+    
     public static Connection getConnection(){ //abre e faz a conexão com o banco
         if(conn == null){
             try{
