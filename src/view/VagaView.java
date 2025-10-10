@@ -25,10 +25,13 @@ public class VagaView {
     }
     
     public void mensagemPesq(Vaga vaga){
+        
+        System.out.println("-----------------------------------");
         System.out.println("Numero da Vaga: " + vaga.getNumeroDeVaga()
                 + "\nStatus: " + vaga.getStatus()
                 + "\nTipo: " + vaga.getTipo()
                 );
+        System.out.println("-----------------------------------\n");
     }
     
     public void listar(ArrayList<Vaga> vagas){
@@ -39,7 +42,9 @@ public class VagaView {
                 + "\nStatus: " + v.getStatus()
                 + "\nTipo: " + v.getTipo()
                 );
+            System.out.println("-----------------------------------\n");
         }
+        System.out.println("------------------------------------------");
     }
 
     
