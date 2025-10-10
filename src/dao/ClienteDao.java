@@ -200,7 +200,29 @@ public class ClienteDao {
 }
 
     
+public void excluir(String cpf) {
+    PreparedStatement ps = null;
+    try {
+        conn = DB.getConnection();
 
+        ps = conn.prepareStatement("DELETE FROM cliente WHERE cpf = ?");
+
+        ps.setString(1, cpf);
+
+        int rowsAffected = ps.executeUpdate();
+        if (rowsAffected > 0) {
+            System.out.println("Cliente excluído com sucesso!");
+        } else {
+            System.out.println("Nenhum cliente encontrado com este CPF.");
+        }
+
+    } catch (SQLException e) {
+        e.printStackTrace();
+    } finally {
+        DB.closeStatment(ps);
+        DB.closeResultSet(rs);
+    }
+}
 
 
 

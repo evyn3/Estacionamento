@@ -53,5 +53,8 @@ public class ClienteControll {
     String valor = view.novoValor();
     dao.alterarCampo(cpf, campo, valor);
 }
-
+    public void excluir() {
+    String cpf = view.excluir();
+    dao.excluir(cpf);
+    }
 }

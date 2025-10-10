@@ -115,4 +115,9 @@ public class ClienteView {
     return sc.nextLine();
 }
     
+    public String excluir() {
+    System.out.print("Digite o CPF do cliente que deseja excluir: ");
+    return sc.nextLine();
+}
+    
 }

@@ -41,9 +41,9 @@ public class Main {
         while (i!=4){
             System.out.println("-------------MENU-------------");
             System.out.println("Digite:");
-            System.out.println("1 - Gestão de Cliente");
-            System.out.println("2 - Gestão de Atendente");
-            System.out.println("3 - Gestão de Vagas");
+            System.out.println("1 - Gestao de Cliente");
+            System.out.println("2 - Gestao de Atendente");
+            System.out.println("3 - Gestao de Vagas");
             System.out.println("4 - Sair");
             System.out.print(": ");
             i = sc.nextInt();
@@ -58,7 +58,7 @@ public class Main {
                     while(x!=6){
 
 
-                        System.out.println("----------------GESTÃO DE CLIENTE-----------------");
+                        System.out.println("----------------GESTAO DE CLIENTE-----------------");
                         System.out.println("Digite:");
                         System.out.println("1 - Cadastrar cliente");
                         System.out.println("2 - Listar Clientes");
@@ -84,6 +84,7 @@ public class Main {
                                 clienteControll.alterar();
                                 break;
                             case 5:
+                                clienteControll.excluir();
                                 break;
                             case 6:
                                 break;
@@ -95,7 +96,7 @@ public class Main {
                     while(x!=6){
 
 
-                        System.out.println("----------------GESTÃO DE ATENDENTE-----------------");
+                        System.out.println("----------------GESTAO DE ATENDENTE-----------------");
                         System.out.println("Digite:");
                         System.out.println("1 - Cadastrar atendente");
                         System.out.println("2 - Listar atendentes");
