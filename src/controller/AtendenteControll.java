@@ -30,6 +30,15 @@ public class AtendenteControll {
 
         public void pesquisar(){ view.mensagemPesq(dao.pesquisar(view.pesquisar()));}
 
+        public void alterar() {
+        int id = view.pesquisar();
+        int var = view.pergAlterar();
+        String x = view.respAlterar(var);
+
+        dao.alterar(id, var, x);
+        view.mensagemAlt();
+    }
+        
         /*public void pesquisar(){
             view.mensagemPesq(dao.pesquisar(view.pesquisar()));
         }*/

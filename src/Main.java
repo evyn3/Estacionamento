@@ -75,11 +75,17 @@ public class Main {
 
         //--------------------------------PESQUISAR ATENDENTES------------------------------------
 
-        AtendenteControll atendenteControll = new AtendenteControll();
-        atendenteControll.pesquisar();
+        //AtendenteControll atendenteControll = new AtendenteControll();
+        //atendenteControll.pesquisar();
 
         //-----------------------------------------------------------------------------------------
 
+        //--------------------------------ALTERAR ATENDENTES------------------------------------
+        
+        AtendenteControll atendenteControll = new AtendenteControll();
+        atendenteControll.alterar();
+        
+        //-----------------------------------------------------------------------------------------
 
         
         //--------------------------------------PESQUISAR VAGAS-------------------------------------
@@ -89,8 +95,8 @@ public class Main {
         
         //-----------------------------------------------------------------------------------------
 
-        VagaControll vagacontroll = new VagaControll();
-        vagacontroll.listar();
+        //VagaControll vagacontroll = new VagaControll();
+        //vagacontroll.listar();
         
         
 

@@ -8,17 +8,15 @@ import java.io.FileInputStream; //ler
 public class DB {
 
     private static Connection conn = null;//instancia uma conexão
-
-    public static Connection getConnection(){ //abre e faz a conexão com o banco
-        if(conn == null){
-            try{
-                Properties props = loadProperties();
-
-                String url = props.getProperty("dburl");
-
-                conn = DriverManager.getConnection(url, props);
-
-            } catch(SQLException e){
+    
+    public static Connection getConnection() {
+        if (conn == null) {
+            try {
+                String url = "jdbc:mysql://localhost:3306/estacionamento";
+                String user = "root"; // usuário
+                String password = "banana123"; // senha
+                conn = DriverManager.getConnection(url, user, password);
+            } catch (SQLException e) {
                 throw new DbException(e.getMessage());
             }
         }

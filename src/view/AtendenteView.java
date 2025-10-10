@@ -69,5 +69,30 @@ public class AtendenteView {
                 + "\nEmail: " + atendente.getEmail()
                 + "\nTelefone: " + atendente.getTelefone());
     }
+    
+    public int pergAlterar() {
+        System.out.println("O que deseja alterar?");
+        System.out.println("1 - Nome\n2 - CPF\n3 - Email\n4 - Telefone\n5 - Senha");
+        System.out.print(": ");
+        int var = sc.nextInt();
+        sc.nextLine();
+        return var;
+    }
+
+    public String respAlterar(int var) {
+        switch (var) {
+            case 1: System.out.print("Digite o novo nome: "); break;
+            case 2: System.out.print("Digite o novo CPF: "); break;
+            case 3: System.out.print("Digite o novo email: "); break;
+            case 4: System.out.print("Digite o novo telefone: "); break;
+            case 5: System.out.print("Digite a nova senha: "); break;
+            default: System.out.print("Digite o novo valor: "); break;
+        }
+        return sc.nextLine();
+    }
+
+    public void mensagemAlt() {
+        System.out.println("Alteração feita com sucesso!!");
+    }
 
 }
