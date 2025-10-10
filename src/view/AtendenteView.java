@@ -29,9 +29,9 @@ public class AtendenteView {
 
         System.out.println("Digite seu nome: ");
         nome = sc.nextLine();
-        System.out.println("Digite seu cpf: ");
+        System.out.println("Digite seu cpf (xxx.xxx.xxx-xx): ");
         cpf = sc.nextLine();
-        System.out.println("Digite seu telefone: ");
+        System.out.println("Digite seu telefone {(xx) xxxxx-xxxx}:");
         telefone = sc.nextLine();
         System.out.println("Digite seu email: ");
         email = sc.nextLine();
@@ -53,6 +53,7 @@ public class AtendenteView {
         for (Atendente at : atendentes){
             System.out.println("\nNome: " + at.getNome() + "\n"+ "Id: " + at.getId() + "\nCPF: " + at.getCpf());
         }
+        System.out.println("----------------------------------------------------");
     }
 
     public int pesquisar(){

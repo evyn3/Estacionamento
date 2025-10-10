@@ -37,13 +37,13 @@ public class ClienteView {
 
         System.out.println("Digite seu nome: ");
         nome = sc.nextLine();
-        System.out.println("Digite seu cpf: ");
+        System.out.println("Digite seu cpf (xxx.xxx.xxx-xx): ");
         cpf = sc.nextLine();
-        System.out.println("Digite seu telefone: ");
+        System.out.println("Digite seu telefone ((xx) xxxxx-xxxx): ");
         telefone = sc.nextLine();
         System.out.println("Digite seu email: ");
         email = sc.nextLine();
-        System.out.println("Digite seu senha: ");
+        System.out.println("Digite seu senha (8 caracteres): ");
         senha = sc.nextLine();
         System.out.println("Digite seu cnh: ");
         cnh = sc.nextLine();
@@ -65,11 +65,12 @@ public class ClienteView {
         for (Cliente cl : clientes){
             System.out.println("CPF: " + cl.getCpf() + "\nNome: " + cl.getNome() + "\n");
         }
+        System.out.println("--------------------------------------");
     }
 
     public String pesquisar(){
         String cpf;
-        System.out.print("Digite o cpf do cliente: ");
+        System.out.print("Digite o cpf do cliente (xxx.xxx.xxx-xx): ");
         cpf = sc.nextLine();
 
         return cpf;

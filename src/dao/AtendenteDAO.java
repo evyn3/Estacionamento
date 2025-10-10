@@ -60,7 +60,7 @@ public class AtendenteDAO {
 
         } finally {
             DB.closeStatment(ps);
-            DB.closeConnection();
+            //DB.closeConnection();
             DB.closeResultSet(rs);
         }
     }
