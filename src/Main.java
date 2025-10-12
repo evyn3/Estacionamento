@@ -3,7 +3,7 @@ import controller.AtendenteControll;
 import controller.ClienteControll;
 import controller.EnderecoControll;
 import controller.UsuarioControll;
-import controller.VagaControll;
+//import controller.VagaControll;
 import dao.ClienteDao;
 import dao.EnderecoDao;
 import dao.UsuarioDao;
@@ -30,7 +30,7 @@ public class Main {
 
         ClienteControll clienteControll = new ClienteControll();
         AtendenteControll atendenteControll = new AtendenteControll();
-        VagaControll vagaControll = new VagaControll();
+        //VagaControll vagaControll = new VagaControll();
         Scanner sc = new Scanner(System.in);
 
 
@@ -145,7 +145,7 @@ public class Main {
                         sc.nextLine();
 
 
-                        switch (x){
+                        /*switch (x){
                             case 1:
                                 vagaControll.listar();
                                 break;
@@ -154,7 +154,7 @@ public class Main {
                                 break;
                             case 3:
                                 break;
-                        }
+                        }*/
                     }
                     System.out.println("-----------------------------------------------");
 

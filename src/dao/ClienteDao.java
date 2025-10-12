@@ -202,19 +202,38 @@ public class ClienteDao {
     
 public void excluir(String cpf) {
     PreparedStatement ps = null;
+    ResultSet rs = null;
+    
     try {
         conn = DB.getConnection();
+        
+        ps = conn.prepareStatement("SELECT id_end FROM cliente WHERE cpf = ?");
+        ps.setString(1, cpf);
+        rs = ps.executeQuery();
+        
+        int id_end = -1;
+        if (rs.next()) {
+            id_end = rs.getInt("id_end");
+        }
 
         ps = conn.prepareStatement("DELETE FROM cliente WHERE cpf = ?");
 
         ps.setString(1, cpf);
 
         int rowsAffected = ps.executeUpdate();
+        
         if (rowsAffected > 0) {
             System.out.println("Cliente excluído com sucesso!");
+            
+            if (id_end > 0) {
+                EnderecoDao endDao = new EnderecoDao();
+                endDao.excluirEndereco(id_end);
+            }
+
         } else {
             System.out.println("Nenhum cliente encontrado com este CPF.");
         }
+            
 
     } catch (SQLException e) {
         e.printStackTrace();

@@ -211,5 +211,27 @@ public class EnderecoDao {
         }
 
     }
+    
+    public void excluirEndereco(int id_end) {
+    PreparedStatement ps = null;
+    try {
+        conn = DB.getConnection();
+
+        ps = conn.prepareStatement("DELETE FROM endereco WHERE id_end = ?");
+        ps.setInt(1, id_end);
+
+        int rowsAffected = ps.executeUpdate();
+        if (rowsAffected > 0) {
+            System.out.println("Endereço excluído com sucesso!");
+        } else {
+            System.out.println("Nenhum endereço encontrado com este ID.");
+        }
+
+    } catch (SQLException e) {
+        e.printStackTrace();
+    } finally {
+        DB.closeStatment(ps);
+    }
+}
 
 }
