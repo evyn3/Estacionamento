@@ -69,7 +69,7 @@ public class AtendenteView {
 
     public int pesquisar(){
         int id;
-        System.out.print("Digite o id do funcionário: ");
+    System.out.print("Digite o id do funcionario: ");
         id = sc.nextInt();
 
         return id;
@@ -84,7 +84,7 @@ public class AtendenteView {
     
     public int pergAlterar() {
         System.out.println("O que deseja alterar?");
-        System.out.println("1 - Nome\n2 - CPF\n3 - Email\n4 - Telefone\n5 - Senha\n6 - Endereço");
+        System.out.println("1 - Nome\n2 - CPF\n3 - Email\n4 - Telefone\n5 - Senha\n6 - Endereco");
         System.out.print(": ");
         int var = sc.nextInt();
         sc.nextLine();
@@ -104,7 +104,7 @@ public class AtendenteView {
     }
 
     public void mensagemAlt() {
-        System.out.println("Alteração feita com sucesso!!");
+        System.out.println("Alteracao feita com sucesso!!");
     }
 
     public int excluir() {
@@ -114,7 +114,7 @@ public class AtendenteView {
 
     public void msgExcluir(int rowsAffected) {
         if (rowsAffected > 0) {
-            System.out.println("Atendente excluído com sucesso!");
+            System.out.println("Atendente excluido com sucesso!");
 
         } else {
             System.out.println("Nenhum atendente encontrado com este id.");

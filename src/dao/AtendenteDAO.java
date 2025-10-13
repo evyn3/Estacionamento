@@ -5,10 +5,10 @@ import db.DbException;
 import model.Atendente;
 import model.Cliente;
 import model.Endereco;
-
 import java.sql.*;
 import java.text.ParseException;
 import java.util.ArrayList;
+import view.EnderecoView;
 
 public class AtendenteDAO {
 
@@ -146,69 +146,90 @@ public class AtendenteDAO {
     }
     
     public void alterar(int id_f, int var, String x) {
-        Connection conn = null;
-        PreparedStatement ps = null;
+    PreparedStatement ps = null;
+    Connection conn = null;
 
-        try {
-            conn = DB.getConnection();
+    try {
+        conn = DB.getConnection();
 
-            switch (var) {
-                case 1:
-                    ps = conn.prepareStatement(
-                        "UPDATE funcionario SET nome = ? WHERE id_f = ?"
-                    );
-                    ps.setString(1, x);
-                    ps.setInt(2, id_f);
-                    ps.executeUpdate();
-                    break;
+        switch (var) {
+            case 1:
+                ps = conn.prepareStatement(
+                    "UPDATE funcionario SET nome = ? WHERE id_f = ?"
+                );
+                ps.setString(1, x);
+                ps.setInt(2, id_f);
+                ps.executeUpdate();
+                break;
 
-                case 2:
-                    ps = conn.prepareStatement(
-                        "UPDATE funcionario SET cpf = ? WHERE id_f = ?"
-                    );
-                    ps.setString(1, x);
-                    ps.setInt(2, id_f);
-                    ps.executeUpdate();
-                    break;
+            case 2:
+                ps = conn.prepareStatement(
+                    "UPDATE funcionario SET cpf = ? WHERE id_f = ?"
+                );
+                ps.setString(1, x);
+                ps.setInt(2, id_f);
+                ps.executeUpdate();
+                break;
 
-                case 3:
-                    ps = conn.prepareStatement(
-                        "UPDATE funcionario SET email = ? WHERE id_f = ?"
-                    );
-                    ps.setString(1, x);
-                    ps.setInt(2, id_f);
-                    ps.executeUpdate();
-                    break;
+            case 3:
+                ps = conn.prepareStatement(
+                    "UPDATE funcionario SET email = ? WHERE id_f = ?"
+                );
+                ps.setString(1, x);
+                ps.setInt(2, id_f);
+                ps.executeUpdate();
+                break;
 
-                case 4:
-                    ps = conn.prepareStatement(
-                        "UPDATE funcionario SET telefone = ? WHERE id_f = ?"
-                    );
-                    ps.setString(1, x);
-                    ps.setInt(2, id_f);
-                    ps.executeUpdate();
-                    break;
+            case 4:
+                ps = conn.prepareStatement(
+                    "UPDATE funcionario SET telefone = ? WHERE id_f = ?"
+                );
+                ps.setString(1, x);
+                ps.setInt(2, id_f);
+                ps.executeUpdate();
+                break;
 
-                case 5:
-                    ps = conn.prepareStatement(
-                        "UPDATE funcionario SET senha = ? WHERE id_f = ?"
-                    );
-                    ps.setString(1, x);
-                    ps.setInt(2, id_f);
-                    ps.executeUpdate();
-                    break;
+            case 5:
+                ps = conn.prepareStatement(
+                    "UPDATE funcionario SET senha = ? WHERE id_f = ?"
+                );
+                ps.setString(1, x);
+                ps.setInt(2, id_f);
+                ps.executeUpdate();
+                break;
 
-                default:
-                    throw new DbException("Opcao invalida para alteracao!");
-            }
+            case 6:
+                ps = conn.prepareStatement("SELECT id_end FROM funcionario WHERE id_f = ?");
+                ps.setInt(1, id_f);
+                ResultSet rs = ps.executeQuery();
+
+                if (rs.next()) {
+                    int id_end = rs.getInt("id_end");
+
+                    EnderecoView endView = new EnderecoView();
+                    EnderecoDao endDao = new EnderecoDao();
+
+                    int varEnd = endView.pergAlterar();
+                    String novoValor = endView.respAlterar(varEnd);
+
+                    endDao.alterar(id_end, varEnd, novoValor);
+
+                    endView.mensagemAlt();
+                } else {
+                    System.out.println("Funcionario nao encontrado ou sem endereco vinculado.");
+                }
+                break;
+
+            default:
+                throw new DbException("Opcao invalida para alteracao!");
         }
-        catch (SQLException e) {
+
+        } catch (SQLException e) {
             throw new DbException(e.getMessage());
-        }
-        finally {
+        } finally {
             DB.closeStatment(ps);
-        }
-    }
+        
+        }} 
 
     public int excluir(int id) {
         Connection conn = null;
