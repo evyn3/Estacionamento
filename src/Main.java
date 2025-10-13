@@ -119,8 +119,10 @@ public class Main {
                                 atendenteControll.pesquisar();
                                 break;
                             case 4:
+                                atendenteControll.alterar();
                                 break;
                             case 5:
+                                atendenteControll.excluir();
                                 break;
                             case 6:
                                 break;

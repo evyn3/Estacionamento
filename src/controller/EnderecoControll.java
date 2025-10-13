@@ -38,8 +38,8 @@ public class EnderecoControll {
 
     public void pesquisar(){view.mensagemPesq(dao.pesquisar(view.pesquisar()));}
 
-    public void alterar(){
-        int id = view.pesquisar();
+    public void alterar(int id){
+        //int id = view.pesquisar();
         int var = view.pergAlterar();
         String x = view.respAlterar(var);
 

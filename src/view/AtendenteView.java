@@ -47,6 +47,10 @@ public class AtendenteView {
 
         }
 
+    public void cadastrarMsg(){
+        System.out.println("Atendente cadastrado com sucesso!!!!\n");
+    }
+
     public void listar(ArrayList<Atendente> atendentes){
 
         System.out.println("---------------ATENDENTES---------------");
@@ -73,7 +77,7 @@ public class AtendenteView {
     
     public int pergAlterar() {
         System.out.println("O que deseja alterar?");
-        System.out.println("1 - Nome\n2 - CPF\n3 - Email\n4 - Telefone\n5 - Senha");
+        System.out.println("1 - Nome\n2 - CPF\n3 - Email\n4 - Telefone\n5 - Senha\n6 - Endereço");
         System.out.print(": ");
         int var = sc.nextInt();
         sc.nextLine();

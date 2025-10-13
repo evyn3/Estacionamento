@@ -59,6 +59,10 @@ public class ClienteView {
 
     }
 
+    public void cadastrarMsg(){
+        System.out.println("Cliente cadastrado com sucesso!!!!\n");
+    }
+
     public void listar(ArrayList<Cliente> clientes){
 
         System.out.println("---------------CLIENTES---------------");
@@ -92,8 +96,9 @@ public class ClienteView {
         System.out.println("2 - Email");
         System.out.println("3 - Telefone");
         System.out.println("4 - CNH");
-        System.out.println("5 -  Senha");
+        System.out.println("5 - Senha");
         System.out.println("6 - Credito");
+        System.out.println("7 - Endereco");
     
         int opcao = sc.nextInt();
         sc.nextLine();
@@ -105,6 +110,7 @@ public class ClienteView {
         case 4 -> "cnh";
         case 5 -> "senha";
         case 6 -> "credito";
+        case 7 -> "endereco";
         default -> "";
     };
  

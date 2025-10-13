@@ -20,6 +20,7 @@ public class ClienteControll {
     private Cliente model = new Cliente();
     private ClienteView view = new ClienteView();
     private ClienteDao dao = new ClienteDao();
+    private EnderecoControll enderecoControll = new EnderecoControll();
 
     public ClienteControll() {
 
@@ -30,6 +31,7 @@ public class ClienteControll {
         model = view.cadastrar();
         endao.cadastrar(model.getEndereco());
         dao.cadastrar(model);
+        view.cadastrarMsg();
 
     }
 
@@ -50,8 +52,12 @@ public class ClienteControll {
         return;
     }
 
-    String valor = view.novoValor();
-    dao.alterarCampo(cpf, campo, valor);
+    if (campo.equals("endereco")){
+        enderecoControll.alterar(dao.pesquisar(cpf).getEndereco().getId());
+        }else{
+        String valor = view.novoValor();
+        dao.alterarCampo(cpf, campo, valor);
+    }
 }
     public void excluir() {
     String cpf = view.excluir();

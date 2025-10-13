@@ -7,7 +7,7 @@ import view.VagaView;
 
 public class VagaControll {
 
-  private Vaga model = new Vaga();
+  //private Vaga model = new Vaga();
   private VagaView view = new VagaView();
   private VagaDAO dao = new VagaDAO();
 

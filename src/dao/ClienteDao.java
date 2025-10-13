@@ -4,6 +4,7 @@
  */
 package dao;
 
+import controller.EnderecoControll;
 import db.DB;
 import model.Cliente;
 import model.Endereco;
@@ -23,6 +24,7 @@ public class ClienteDao {
     ResultSet rs = null; //interface que representa o conjuto dos resultados de uma conculta em um banco de dados
 
     EnderecoDao endDao = new EnderecoDao();
+    EnderecoControll enderecoControll = new EnderecoControll();
 
     public ClienteDao() {
 
@@ -171,12 +173,6 @@ public class ClienteDao {
             case "credito":
                 ps = conn.prepareStatement("UPDATE cliente SET credito = ? WHERE cpf = ?");
                 ps.setDouble(1, Double.parseDouble(novoValor));
-                ps.setString(2, cpf);
-                break;
-
-            case "id_end":
-                ps = conn.prepareStatement("UPDATE cliente SET id_end = ? WHERE cpf = ?");
-                ps.setString(1, novoValor);
                 ps.setString(2, cpf);
                 break;
 

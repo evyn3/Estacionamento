@@ -222,9 +222,9 @@ public class EnderecoDao {
 
         int rowsAffected = ps.executeUpdate();
         if (rowsAffected > 0) {
-            System.out.println("Endereço excluído com sucesso!");
+            //System.out.println("Endereço excluído com sucesso!");
         } else {
-            System.out.println("Nenhum endereço encontrado com este ID.");
+            //System.out.println("Nenhum endereço encontrado com este ID.");
         }
 
     } catch (SQLException e) {

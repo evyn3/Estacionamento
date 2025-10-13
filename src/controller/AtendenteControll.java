@@ -11,6 +11,7 @@ public class AtendenteControll {
         private Atendente model = new Atendente();
         private AtendenteView view = new AtendenteView();
         private AtendenteDAO dao = new AtendenteDAO();
+        private EnderecoControll enderecoControll = new EnderecoControll();
 
         public AtendenteControll() {
 
@@ -21,6 +22,7 @@ public class AtendenteControll {
             model = view.cadastrar();
             endao.cadastrar(model.getEndereco());
             dao.cadastrar(model);
+            view.cadastrarMsg();
 
         }
 
@@ -33,11 +35,20 @@ public class AtendenteControll {
         public void alterar() {
         int id = view.pesquisar();
         int var = view.pergAlterar();
-        String x = view.respAlterar(var);
+        if (var == 6){
+            enderecoControll.alterar(dao.pesquisar(id).getEndereco().getId());
+        } else {
+            String x = view.respAlterar(var);
 
-        dao.alterar(id, var, x);
-        view.mensagemAlt();
+            dao.alterar(id, var, x);
+            view.mensagemAlt();
+        }
+
     }
+
+        public void excluir(){
+
+        }
         
         /*public void pesquisar(){
             view.mensagemPesq(dao.pesquisar(view.pesquisar()));
