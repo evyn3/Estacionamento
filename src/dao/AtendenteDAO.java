@@ -208,48 +208,51 @@ public class AtendenteDAO {
         }
     }
 
-    /*public Cliente pesquisar(String idcpf) {
-        Cliente clie = new Cliente();
+    public int excluir(int id) {
+        Connection conn = null;
+        PreparedStatement ps = null;
+        int rowsAffected = 0;
 
         try {
-            conn = DB.getConnection();//tenta iniciar a conexão
+            conn = DB.getConnection();
 
-            st = conn.createStatement();//cria a conexão com o banco
+            ps = conn.prepareStatement("SELECT id_end FROM funcionario WHERE id_f = ?");
+            ps.setInt(1, id);
+            rs = ps.executeQuery();
 
-            rs = st.executeQuery("select * from cliente");//cria consulta com o banco
+            int id_end = -1;
+            if (rs.next()) {
+                id_end = rs.getInt("id_end");
+            }
 
-            while (rs.next()) { //percorre o banco
+            ps = conn.prepareStatement("DELETE FROM funcionario WHERE id_f = ?");
+            ps.setInt(1, id);
 
-                String cpf = rs.getString("cpf");
+            rowsAffected = ps.executeUpdate();
 
-                if (cpf.equals(idcpf)) {
-                    String nome = rs.getString("nome");
-                    String email = rs.getString("email");
-                    String telefone = rs.getString("telefone");
-                    String cnh = rs.getString("cnh");
-                    String senha = rs.getString("senha");
-                    double credito = rs.getDouble("credito");
-                    int idend = rs.getInt("id_end");
+            if (rowsAffected > 0) {
+                //System.out.println("Atendente excluído com sucesso!");
 
-                    Endereco endereco = endDao.pesquisar(idend);
-                    clie = new Cliente(nome, cpf, telefone, email, senha, endereco, cnh, credito);
-
+                if (id_end > 0) {
+                    EnderecoDao endDao = new EnderecoDao();
+                    endDao.excluirEndereco(id_end);
                 }
 
-                //System.out.println(rs.getInt("id_end") + " - " + rs.getString("rua") + rs.getString("bairro") + rs.getInt("numero") + rs.getString("cidade"));
+            } else {
+                //System.out.println("Nenhum atendente encontrado com este id.");
             }
+
 
         } catch (SQLException e) {
             e.printStackTrace();
-        } finally {
-            DB.closeStatment(st);
-            DB.closeResultSet(rs);
-            //DB.closeConnection();
 
+        } finally {
+            DB.closeStatment(ps);
+            DB.closeResultSet(rs);
         }
 
-        return clie;
+        return rowsAffected;
+    }
 
-    }*/
 
 }

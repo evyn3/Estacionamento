@@ -1,5 +1,6 @@
 package view;
 
+import dao.EnderecoDao;
 import model.Atendente;
 import model.Cliente;
 import model.Endereco;
@@ -98,6 +99,20 @@ public class AtendenteView {
 
     public void mensagemAlt() {
         System.out.println("Alteração feita com sucesso!!");
+    }
+
+    public int excluir() {
+        System.out.print("Digite o id do atendente que deseja excluir: ");
+        return sc.nextInt();
+    }
+
+    public void msgExcluir(int rowsAffected) {
+        if (rowsAffected > 0) {
+            System.out.println("Atendente excluído com sucesso!");
+
+        } else {
+            System.out.println("Nenhum atendente encontrado com este id.");
+        }
     }
 
 }

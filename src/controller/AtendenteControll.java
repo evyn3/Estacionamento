@@ -48,10 +48,8 @@ public class AtendenteControll {
 
         public void excluir(){
 
+            int id = view.excluir();
+            view.msgExcluir(dao.excluir(id));
         }
-        
-        /*public void pesquisar(){
-            view.mensagemPesq(dao.pesquisar(view.pesquisar()));
-        }*/
 
     }
