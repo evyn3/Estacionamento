@@ -59,8 +59,13 @@ public class ClienteView {
 
     }
 
-    public void cadastrarMsg(){
-        System.out.println("Cliente cadastrado com sucesso!!!!\n");
+    public void cadastrarMsg(int rowsAffected){
+        if (rowsAffected > 0) {
+            System.out.println("Cliente cadastrado com sucesso!");
+
+        } else {
+            System.out.println("Erro ao cadastrar cliente!!");
+        }
     }
 
     public void listar(ArrayList<Cliente> clientes){
@@ -114,6 +119,14 @@ public class ClienteView {
         default -> "";
     };
  
+    }
+
+    public void msgAlterar(int rowsAffected){
+        if (rowsAffected > 0) {
+            System.out.println("Cliente alterar com sucesso!");
+        } else {
+            System.out.println("Erro ao alterar o cliente!");
+        }
     }
     
     public String novoValor() {

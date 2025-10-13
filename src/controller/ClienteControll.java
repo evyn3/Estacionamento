@@ -30,8 +30,8 @@ public class ClienteControll {
         //ende.cadastrar();
         model = view.cadastrar();
         endao.cadastrar(model.getEndereco());
-        dao.cadastrar(model);
-        view.cadastrarMsg();
+        int x = dao.cadastrar(model);
+        view.cadastrarMsg(x);
 
     }
 
@@ -44,21 +44,23 @@ public class ClienteControll {
     }
     
     public void alterar() {
-    String cpf = view.pesquisar(); // já tem método que pede CPF
-    String campo = view.escolherCampo();
+        String cpf = view.pesquisar(); // já tem método que pede CPF
+        String campo = view.escolherCampo();
+        int x = 0;
 
-    if (campo.isEmpty()) {
-        System.out.println("Opção inválida!");
-        return;
-    }
+        if (campo.isEmpty()) {
+            System.out.println("Opção inválida!");
+            return;
+        }
 
-    if (campo.equals("endereco")){
-        enderecoControll.alterar(dao.pesquisar(cpf).getEndereco().getId());
-        }else{
-        String valor = view.novoValor();
-        dao.alterarCampo(cpf, campo, valor);
+        if (campo.equals("endereco")){
+            enderecoControll.alterar(dao.pesquisar(cpf).getEndereco().getId());
+            }else{
+            String valor = view.novoValor();
+            x =dao.alterarCampo(cpf, campo, valor);
+        }
+        view.msgAlterar(x);
     }
-}
     public void excluir() {
     String cpf = view.excluir();
     dao.excluir(cpf);

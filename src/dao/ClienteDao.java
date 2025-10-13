@@ -73,8 +73,9 @@ public class ClienteDao {
         return clie;
     }
 
-    public void cadastrar(Cliente cliente){
+    public int cadastrar(Cliente cliente){
         PreparedStatement ps = null;//para inserir dados no banco
+        int rowsAffected = 0;
         try{
             conn = DB.getConnection();//tenta iniciar a conexão
             ps = conn.prepareStatement(
@@ -94,7 +95,7 @@ public class ClienteDao {
             ps.setInt(8, cliente.getEndereco().getId());
 
 
-            int rowsAffected = ps.executeUpdate(); //para executar
+            rowsAffected = ps.executeUpdate(); //para executar
 
             //System.out.println("Finalizando linha alterada " + rowsAffected);
 
@@ -106,6 +107,8 @@ public class ClienteDao {
             //DB.closeConnection();
             DB.closeResultSet(rs);
         }
+
+        return rowsAffected;
     }
 
     public ArrayList<Cliente> listar(){
@@ -153,46 +156,44 @@ public class ClienteDao {
     }
 
 
-     public void alterarCampo(String cpf, String campo, String novoValor) {
-    PreparedStatement ps = null;
+     public int alterarCampo(String cpf, String campo, String novoValor) {
+        PreparedStatement ps = null;
+        int rowsAffected = 0;
 
-    try {
-        conn = DB.getConnection(); // inicia a conexão
+        try {
+            conn = DB.getConnection(); // inicia a conexão
 
-        switch (campo) {
-            case "nome":
-            case "email":
-            case "telefone":
-            case "cnh":
-            case "senha":
-                ps = conn.prepareStatement("UPDATE cliente SET " + campo + " = ? WHERE cpf = ?");
-                ps.setString(1, novoValor);
-                ps.setString(2, cpf);
-                break;
+            switch (campo) {
+                case "nome":
+                case "email":
+                case "telefone":
+                case "cnh":
+                case "senha":
+                    ps = conn.prepareStatement("UPDATE cliente SET " + campo + " = ? WHERE cpf = ?");
+                    ps.setString(1, novoValor);
+                    ps.setString(2, cpf);
+                    break;
 
-            case "credito":
-                ps = conn.prepareStatement("UPDATE cliente SET credito = ? WHERE cpf = ?");
-                ps.setDouble(1, Double.parseDouble(novoValor));
-                ps.setString(2, cpf);
-                break;
+                case "credito":
+                    ps = conn.prepareStatement("UPDATE cliente SET credito = ? WHERE cpf = ?");
+                    ps.setDouble(1, Double.parseDouble(novoValor));
+                    ps.setString(2, cpf);
+                    break;
 
-            default:
-                System.out.println("Campo inválido: " + campo);
-                return;
+                default:
+                    System.out.println("Campo inválido: " + campo);
+                    break;
+            }
+
+            rowsAffected = ps.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            DB.closeStatment(ps);
         }
 
-        int rowsAffected = ps.executeUpdate();
-        if (rowsAffected > 0) {
-            System.out.println("Campo " + campo + " atualizado com sucesso!");
-        } else {
-            System.out.println("Nenhum cliente encontrado com este CPF.");
-        }
-
-    } catch (SQLException e) {
-        e.printStackTrace();
-    } finally {
-        DB.closeStatment(ps);
-    }
+        return rowsAffected;
 }
 
     

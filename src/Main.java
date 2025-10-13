@@ -47,10 +47,9 @@ public class Main {
             System.out.println("4 - Sair");
             System.out.print(": ");
             i = sc.nextInt();
-            sc.nextLine();
 
 
-            System.out.println("---------------------------------------------------");
+            System.out.println("-------------------------------------");
 
 
             switch (i){
@@ -66,6 +65,7 @@ public class Main {
                         System.out.println("4 - Alterar Cliente");
                         System.out.println("5 - Excluir cliente");
                         System.out.println("6 - Sair");
+                        System.out.print(": ");
                         x = sc.nextInt();
                         sc.nextLine();
 
@@ -90,6 +90,7 @@ public class Main {
                                 break;
                         }
                     }
+                    x = 0;
                     System.out.println("-----------------------------------------------");
                     break;
                 case 2:
@@ -104,6 +105,7 @@ public class Main {
                         System.out.println("4 - Alterar atendente");
                         System.out.println("5 - Excluir atendente");
                         System.out.println("6 - Sair");
+                        System.out.print(": ");
                         x = sc.nextInt();
                         sc.nextLine();
 
@@ -128,8 +130,8 @@ public class Main {
                                 break;
                         }
                     }
+                    x = 0;
                     System.out.println("-----------------------------------------------");
-
 
                     break;
                 case 3:
@@ -143,6 +145,7 @@ public class Main {
                         System.out.println("1 - Listar atendentes");
                         System.out.println("2 - Pesquisar atendente");
                         System.out.println("3 - Sair");
+                        System.out.print(": ");
                         x = sc.nextInt();
                         sc.nextLine();
 
@@ -158,13 +161,11 @@ public class Main {
                                 break;
                         }
                     }
+                    x = 0;
                     System.out.println("-----------------------------------------------");
-
 
                     break;
                 case 4:
-
-
                     break;
             }
 

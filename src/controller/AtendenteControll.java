@@ -21,8 +21,8 @@ public class AtendenteControll {
             //ende.cadastrar();
             model = view.cadastrar();
             endao.cadastrar(model.getEndereco());
-            dao.cadastrar(model);
-            view.cadastrarMsg();
+            int x = dao.cadastrar(model);
+            view.cadastrarMsg(x);
 
         }
 

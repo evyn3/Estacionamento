@@ -22,9 +22,10 @@ public class AtendenteDAO {
 
     }
 
-    public void cadastrar(Atendente atendente) {
+    public int cadastrar(Atendente atendente) {
 
         PreparedStatement ps = null;
+        int rowsAffected = 0;
 
         try {
             conn = DB.getConnection();
@@ -45,7 +46,7 @@ public class AtendenteDAO {
             ps.setInt(6, atendente.getEndereco().getId());
 
 
-            int rowsAffected = ps.executeUpdate();
+            rowsAffected = ps.executeUpdate();
 
             if (rowsAffected > 0) {
                 rs = ps.getGeneratedKeys();
@@ -63,6 +64,7 @@ public class AtendenteDAO {
             //DB.closeConnection();
             DB.closeResultSet(rs);
         }
+        return rowsAffected;
     }
 
     public ArrayList<Atendente> listar() {

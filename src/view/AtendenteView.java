@@ -48,8 +48,14 @@ public class AtendenteView {
 
         }
 
-    public void cadastrarMsg(){
-        System.out.println("Atendente cadastrado com sucesso!!!!\n");
+    public void cadastrarMsg(int rowsAffected){
+
+        if (rowsAffected > 0) {
+            System.out.println("Atendente cadastrado com sucesso!");
+
+        } else {
+            System.out.println("Erro ao cadastrar cliente!");
+        }
     }
 
     public void listar(ArrayList<Atendente> atendentes){
