@@ -6,6 +6,10 @@ public class Vaga {
     private String tipo;
     private String status;
 
+    public Vaga() {
+    }
+    
+
     public Vaga(int numeroDeVaga, String tipo, String status) {
         this.numeroDeVaga = numeroDeVaga;
         this.tipo = tipo;
@@ -37,22 +41,6 @@ public class Vaga {
     }
     
     
-    public void criar() {      
-    }
-
-public String listar() {
-        return "";
-    }
-
-    public void alterar() {
-    }
-
-    public void excluir() {
-    }
     
-    public String pesquisar() {
-        return "";
-    }
-
     
 }

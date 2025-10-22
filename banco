@@ -1,0 +1,149 @@
+CREATE DATABASE Estacionamento;
+
+USE estacionamento;
+
+CREATE TABLE endereco(
+id_end INT NOT NULL AUTO_INCREMENT UNIQUE,
+rua VARCHAR(30) NOT NULL,
+bairro VARCHAR(30) NOT NULL,
+numero INT,
+cidade VARCHAR(20),
+PRIMARY KEY(id_end)
+);
+
+CREATE TABLE cliente(
+cpf VARCHAR(15) NOT NULL,
+nome VARCHAR(30) NOT NULL,
+email VARCHAR(70) NOT NULL,
+telefone VARCHAR(15) NOT NULL,
+cnh VARCHAR(10) NOT NULL,
+senha VARCHAR(8) NOT NULL,
+credito DOUBLE NOT NULL,
+PRIMARY KEY (cpf),
+id_end INT NOT NULL,
+FOREIGN KEY(id_end) REFERENCES endereco(id_end)
+);
+
+CREATE TABLE veiculo(
+placa VARCHAR(10) NOT NULL UNIQUE,
+cpf VARCHAR(15) NOT NULL,
+cor VARCHAR(15),
+modelo VARCHAR(30) NOT NULL,
+anoDeFabricacao VARCHAR(4),
+PRIMARY KEY (placa),
+FOREIGN KEY (cpf) REFERENCES cliente(cpf)
+);
+
+CREATE TABLE funcionario(
+id_f INT NOT NULL AUTO_INCREMENT UNIQUE,
+cpf VARCHAR(15) NOT NULL,
+nome VARCHAR(50) NOT NULL,
+email VARCHAR(70) NOT NULL,
+telefone VARCHAR(15) NOT NULL,
+senha VARCHAR(10) NOT NULL,
+PRIMARY KEY (id_f),
+id_end INT NOT NULL,
+FOREIGN KEY(id_end) REFERENCES endereco(id_end)
+);
+
+CREATE TABLE atendimento(
+id_atendimento INT NOT NULL AUTO_INCREMENT UNIQUE,
+cpf VARCHAR(15) NOT NULL,
+id_f INT NOT NULL,
+dataAtendimento DATE NOT NULL,
+horaAtendimento TIME NOT NULL,
+PRIMARY KEY (id_atendimento),
+FOREIGN KEY (cpf) REFERENCES cliente(cpf),
+FOREIGN KEY (id_f) REFERENCES funcionario(id_f)
+);
+
+CREATE TABLE vaga(
+numeroVaga INT NOT NULL UNIQUE,
+tipo VARCHAR(10) NOT NULL,
+statusVaga VARCHAR(15) NOT NULL,
+PRIMARY KEY (numeroVaga)
+);
+
+CREATE TABLE reserva(
+id_reserva INT NOT NULL AUTO_INCREMENT UNIQUE,
+cpf VARCHAR(15) NOT NULL,
+horaInicio TIME NOT NULL,
+dataInicio DATE NOT NULL,
+horaFim TIME NOT NULL,
+dataFim DATE NOT NULL,
+numeroVaga INT NOT NULL,
+PRIMARY KEY (id_reserva),
+FOREIGN KEY (numeroVaga) REFERENCES vaga(numeroVaga),
+FOREIGN KEY (cpf) REFERENCES cliente(cpf)
+);
+
+CREATE TABLE estacionamentoT(
+id_est INT NOT NULL AUTO_INCREMENT UNIQUE,
+placa VARCHAR(10) NOT NULL,
+numeroVaga INT NOT NULL,
+horaInicio TIME NOT NULL,
+dataInicio DATE NOT NULL,
+horaFim TIME NOT NULL,
+dataFim DATE NOT NULL,
+id_reserva INT NOT NULL,
+PRIMARY KEY (id_est),
+FOREIGN KEY (id_reserva) REFERENCES reserva(id_reserva),
+FOREIGN KEY (placa) REFERENCES veiculo(placa),
+FOREIGN KEY (numeroVaga) REFERENCES vaga(numeroVaga)
+);
+
+ALTER TABLE estacionamentoT ADD metodo VARCHAR(15) NOT NULL;
+ALTER TABLE estacionamentoT ADD valor DOUBLE NOT NULL;
+
+INSERT INTO vaga (numeroVaga, tipo, statusVaga) VALUES
+(1, 'comum', 'disponível'),
+(2, 'comum', 'reservada'),
+(3, 'comum', 'indisponível'),
+(4, 'comum', 'disponível'),
+(5, 'comum', 'reservada'),
+(6, 'comum', 'disponível'),
+(7, 'comum', 'indisponível'),
+(8, 'comum', 'disponível'),
+(9, 'comum', 'reservada'),
+(10, 'comum', 'disponível'),
+(11, 'comum', 'indisponível'),
+(12, 'comum', 'disponível'),
+(13, 'comum', 'disponível'),
+(14, 'comum', 'reservada'),
+(15, 'comum', 'indisponível'),
+(16, 'comum', 'disponível'),
+(17, 'comum', 'reservada'),
+(18, 'comum', 'disponível'),
+(19, 'comum', 'indisponível'),
+(20, 'comum', 'disponível'),
+(21, 'comum', 'reservada'),
+(22, 'comum', 'disponível'),
+(23, 'comum', 'disponível'),
+(24, 'comum', 'indisponível'),
+(25, 'comum', 'reservada'),
+(26, 'comum', 'disponível'),
+(27, 'comum', 'disponível'),
+(28, 'comum', 'reservada'),
+(29, 'comum', 'indisponível'),
+(30, 'comum', 'disponível'),
+(31, 'comum', 'disponível'),
+(32, 'comum', 'reservada'),
+(33, 'comum', 'indisponível'),
+(34, 'comum', 'disponível'),
+(35, 'comum', 'reservada'),
+(36, 'comum', 'disponível'),
+(37, 'comum', 'disponível'),
+(38, 'comum', 'reservada'),
+(39, 'comum', 'indisponível'),
+(40, 'comum', 'disponível'),
+
+(41, 'pcd', 'disponível'),
+(42, 'pcd', 'reservada'),
+(43, 'pcd', 'indisponível'),
+(44, 'pcd', 'disponível'),
+(45, 'pcd', 'reservada'),
+(46, 'pcd', 'disponível'),
+(47, 'pcd', 'indisponível'),
+(48, 'pcd', 'disponível'),
+(49, 'pcd', 'reservada'),
+(50, 'pcd', 'disponível');

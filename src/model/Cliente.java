@@ -10,16 +10,28 @@ package model;
  */
 import java.util.Scanner;
 
-public class Cliente {
+public class Cliente extends Usuario{
   
     private String cnh;
     private double credito;
 
-   
-    public Cliente(String cnh, double credito) {
+
+
+    public Cliente(){
+
+    }
+
+    public Cliente(String nome, String cpf, String telefone, String email, String senha, Endereco endereco, String cnh, double credito) {
+        super(nome, cpf, telefone, email, senha, endereco);
         this.cnh = cnh;
         this.credito = credito;
     }
+
+    /*public Cliente(String nome, String cpf, String telefone, String email, String senha, String cnh, double credito) {
+        super(nome, cpf, telefone, email, senha);
+        this.cnh = cnh;
+        this.credito = credito;
+    }*/
 
     public boolean reservarVaga() {
     return true;}
@@ -27,7 +39,7 @@ public class Cliente {
    
     public void adicionarVeic() {}
 
-   
+
     public ReservaDeVaga verHistorico() {
     return new ReservaDeVaga();}
 
@@ -50,4 +62,7 @@ public class Cliente {
     public void setCredito(double credito) {
         this.credito = credito;
     }
+
+
+
 }

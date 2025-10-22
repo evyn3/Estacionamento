@@ -13,12 +13,40 @@ import java.util.Scanner;
 
 public class Endereco {
 
+    private int id;
     private String rua;
     private int numero;
     private String bairro;
     private String cidade;
 
-public void setRua(String rua) {
+    public Endereco() {
+    }
+
+    public Endereco(int id, String rua, int numero, String bairro, String cidade)  {
+        this.id = id;
+        this.rua = rua;
+        this.numero = numero;
+        this.bairro=bairro;
+        this.cidade=cidade;
+    }
+
+    public Endereco(String rua, int numero, String bairro, String cidade){
+        this.rua = rua;
+        this.numero = numero;
+        this.bairro=bairro;
+        this.cidade=cidade;
+        this.id=-1;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setRua(String rua) {
         this.rua = rua;
     }
 
